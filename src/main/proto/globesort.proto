@@ -10,7 +10,7 @@ service GlobeSort {
 }
 
 message Empty { 
-  int64 time = 1;
+  
 }
 
 message IntArray {
