@@ -40,10 +40,10 @@ public class GlobeSortClient {
 
     public void run(Integer[] values) throws Exception {
         System.out.println("Pinging " + serverStr + "...");
-        Integer start_time_ping = System.currentTimeMillis();
+        long start_time_ping = System.currentTimeMillis();
         Empty respon = serverStub.ping(Empty.newBuilder().build());
         System.out.println("Ping successful.");
-        System.out.println("Ping Time: "+Integer.toString(start_time_ping - respon.getTime()));
+        System.out.println("Ping Time: "+Long.toString(start_time_ping - respon.getTime()));
 
         long start_time_app = System.currentTimeMillis(); //application-level
         System.out.println("Requesting server to sort array");

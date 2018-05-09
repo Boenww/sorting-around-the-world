@@ -79,7 +79,7 @@ public class GlobeSortServer {
     static class GlobeSortImpl extends GlobeSortGrpc.GlobeSortImplBase {
         @Override
         public void ping(Empty req, final StreamObserver<Empty> responseObserver) {
-            Integer start_time_ping = System.currentTimeMillis();
+            long start_time_ping = System.currentTimeMillis();
             Empty response = Empty.newBuilder().build();
             response.setTime(setTime(System.currentTimeMillis() - start_time_ping));
             responseObserver.onNext(response);
