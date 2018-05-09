@@ -80,8 +80,7 @@ public class GlobeSortServer {
         @Override
         public void ping(Empty req, final StreamObserver<Empty> responseObserver) {
             long start_time_ping = System.currentTimeMillis();
-            Empty response = Empty.newBuilder().build();
-            response.setTime(System.currentTimeMillis() - start_time_ping);
+            Empty response = Empty.newBuilder().setTime(System.currentTimeMillis() - start_time_ping).build();
             responseObserver.onNext(response);
             responseObserver.onCompleted();
         }
