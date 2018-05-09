@@ -50,7 +50,7 @@ public class GlobeSortClient {
         IntArray request = IntArray.newBuilder().addAllValues(Arrays.asList(values)).build();
         IntArray response = serverStub.sortIntegers(request);
         long duration_app = System.currentTimeMillis() - start_time_app;//
-        System.out.println("Sorted array"+";application time: "+Long.toString(duration_app)+";network time: "+long.toString((duration_app - response.getTime())/2));//
+        System.out.println("Sorted array"+";application time: "+Long.toString(duration_app)+";network time: "+Long.toString((duration_app - response.getTime())/2));//
     }
 
 
