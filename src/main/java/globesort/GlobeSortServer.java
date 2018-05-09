@@ -79,22 +79,24 @@ public class GlobeSortServer {
     static class GlobeSortImpl extends GlobeSortGrpc.GlobeSortImplBase {
         @Override
         public void ping(Empty req, final StreamObserver<Empty> responseObserver) {
+            Integer start_time_ping = System.currentTimeMillis();
             Empty response = Empty.newBuilder().build();
+            response.setTime(setTime(System.currentTimeMillis() - start_time_ping));
             responseObserver.onNext(response);
             responseObserver.onCompleted();
         }
 
         @Override
         public void sortIntegers(IntArray req, final StreamObserver<IntArray> responseObserver) {
-            long start_time = System.currentTimeMillis();
+            long start_time_sort = System.currentTimeMillis(); //sort time
             Integer[] values = req.getValuesList().toArray(new Integer[req.getValuesList().size()]);
             Arrays.sort(values);
-            long duration = System.currentTimeMillis() - start_time;
+            long duration_sort = System.currentTimeMillis() - start_time_sort;
             IntArray.Builder responseBuilder = IntArray.newBuilder();
             for(Integer val : values) {
                 responseBuilder.addValues(val);
             }
-            IntArray response = responseBuilder.setTime(duration).build();
+            IntArray response = responseBuilder.setTime(duration_sort).build();
             responseObserver.onNext(response);
             responseObserver.onCompleted();
         }
